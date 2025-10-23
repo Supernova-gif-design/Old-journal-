@@ -1,3 +1,13 @@
+// === Ambient Torch Audio ===
+// Starts playing when the user clicks anywhere for the first time
+window.addEventListener('click', () => {
+  if (window._ambient_audio) return; // prevents multiple loops
+  const amb = new Audio('assets/sounds/ambient_torch.mp3');
+  amb.loop = true;
+  amb.volume = 0.25;
+  amb.play().catch(()=>{});
+  window._ambient_audio = amb;
+}, { once: true });
 
 // Build lists
 const sections = { planes: [], field: [], gods: [], monsters: [], history: [], secrets: [], finale: [] };
